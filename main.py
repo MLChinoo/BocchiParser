@@ -1,5 +1,8 @@
 import sys
 from itertools import cycle
+
+from PySide6 import QtGui
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow
 from window.mainWindow import Ui_MainWindow
 
@@ -9,6 +12,9 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
         self.ui.xorCheckBox.clicked.connect(self.onXorCheckBoxClicked)
         self.ui.rawPacketTextEdit.textChanged.connect(self.onRawPacketTextEditTextChanged)
         self.ui.xorKeyTextEdit.textChanged.connect(self.onRawPacketTextEditTextChanged)

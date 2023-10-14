@@ -19,6 +19,7 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGroupBox, QLabel,
     QMainWindow, QMenu, QMenuBar, QPlainTextEdit,
     QSizePolicy, QWidget)
+import res_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -147,7 +148,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Bocchi the Paketto!", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"BocchiParser", None))
         self.actiong.setText(QCoreApplication.translate("MainWindow", u"g", None))
         self.action_O.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00(O)...", None))
         self.xorCheckBox.setText(QCoreApplication.translate("MainWindow", u"XOR Key :", None))
