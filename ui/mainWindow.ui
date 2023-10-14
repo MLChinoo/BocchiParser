@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>481</width>
-    <height>754</height>
+    <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,6 +84,12 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -99,6 +105,12 @@
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="readOnly">
       <bool>true</bool>
@@ -129,6 +141,12 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -157,6 +175,12 @@
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="readOnly">
       <bool>true</bool>
@@ -187,6 +211,12 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -216,6 +246,12 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -231,6 +267,12 @@
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="readOnly">
       <bool>true</bool>
@@ -325,6 +367,12 @@
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="readOnly">
       <bool>true</bool>

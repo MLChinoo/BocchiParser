@@ -33,7 +33,10 @@ class MainWindow(QMainWindow):
 
     def onRawPacketTextEditTextChanged(self):
         def xorHex(data: str, key: str) -> str:
-            return bytes(v ^ k for (v, k) in zip(bytes.fromhex(data), cycle(bytes.fromhex(key)))).hex()
+            try:
+                return bytes(v ^ k for (v, k) in zip(bytes.fromhex(data), cycle(bytes.fromhex(key)))).hex()
+            except ValueError:
+                pass
 
         def hexToDec(c: str) -> int:
             try:
@@ -45,9 +48,17 @@ class MainWindow(QMainWindow):
             return str(c) if c is not None else ""
 
         self.clearPacketInfoTextEdits()
-        raw = self.ui.rawPacketTextEdit.toPlainText() if not self.ui.xorCheckBox.isChecked()\
-            else xorHex(self.ui.rawPacketTextEdit.toPlainText(), self.ui.xorKeyTextEdit.toPlainText())
         try:
+            packet_text, xor_key_text = self.ui.rawPacketTextEdit.toPlainText(), self.ui.xorKeyTextEdit.toPlainText()
+
+            packet_head_encrypted = xorHex("4567", xor_key_text[0:4]) if self.ui.xorCheckBox.isChecked() else "4567"
+            index: int = packet_text.find(packet_head_encrypted)
+            raw = packet_text[index if index != -1 else 0:]
+
+            raw: str = raw if not self.ui.xorCheckBox.isChecked()\
+                else xorHex(raw, xor_key_text)
+            raw = raw.replace("\n", "").replace(" ", "")
+
             self.ui.magicStartTextEdit.setPlainText(
                 magic_start := raw[0:4])
             self.ui.cmdIdHexTextEdit.setPlainText(
@@ -68,20 +79,18 @@ class MainWindow(QMainWindow):
                 body := raw[p_metadata_end:(p_body_end := p_metadata_end + body_length * 2)])
             self.ui.magicEndTextEdit.setPlainText(
                 magic_end := raw[p_body_end:(p_magic_end_end := p_body_end + 4)])
-        except TypeError:
+        except TypeError or AttributeError:
             pass
-
-        magic_dict = {
-            self.ui.magicStartTextEdit: "4567",
-            self.ui.magicEndTextEdit: "89ab"
-        }
-        for textedit, value in magic_dict.items():
-            textedit.setStyleSheet("background:palegreen" if (text := textedit.toPlainText()).lower() == value
-                                   else "" if text == "" else "background:salmon")
-
+        finally:
+            magic_dict = {
+                self.ui.magicStartTextEdit: "4567",
+                self.ui.magicEndTextEdit: "89ab"
+            }
+            for textedit, value in magic_dict.items():
+                textedit.setStyleSheet("background:palegreen" if (text := textedit.toPlainText()).lower() == value
+                                       else "" if text == "" else "background:salmon")
 
 if __name__ == '__main__':
-
     app = QApplication()
     window = MainWindow()
     window.show()
