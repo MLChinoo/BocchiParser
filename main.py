@@ -1,8 +1,7 @@
 import sys
 from itertools import cycle
 
-from PySide6 import QtGui
-from PySide6.QtGui import QPixmap
+from PySide6 import QtGui, QtCore
 from PySide6.QtWidgets import QApplication, QMainWindow
 from window.mainWindow import Ui_MainWindow
 
@@ -15,6 +14,8 @@ class MainWindow(QMainWindow):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icon/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setWindowIcon(icon)
+        self.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint | QtCore.Qt.WindowCloseButtonHint)
+        self.setFixedSize(self.width(), self.height())
         self.ui.xorCheckBox.clicked.connect(self.onXorCheckBoxClicked)
         self.ui.rawPacketTextEdit.textChanged.connect(self.onRawPacketTextEditTextChanged)
         self.ui.xorKeyTextEdit.textChanged.connect(self.onRawPacketTextEditTextChanged)
@@ -61,7 +62,7 @@ class MainWindow(QMainWindow):
             index: int = packet_text.find(packet_head_encrypted)
             raw = packet_text[index if index != -1 else 0:]
 
-            raw: str = raw if not self.ui.xorCheckBox.isChecked()\
+            raw: str = raw if not self.ui.xorCheckBox.isChecked() \
                 else xorHex(raw, xor_key_text)
             raw = raw.replace("\n", "").replace(" ", "")
 
@@ -95,6 +96,7 @@ class MainWindow(QMainWindow):
             for textedit, value in magic_dict.items():
                 textedit.setStyleSheet("background:palegreen" if (text := textedit.toPlainText()).lower() == value
                                        else "" if text == "" else "background:salmon")
+
 
 if __name__ == '__main__':
     app = QApplication()

@@ -17,15 +17,14 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGroupBox, QLabel,
-    QMainWindow, QMenu, QMenuBar, QPlainTextEdit,
-    QSizePolicy, QWidget)
+    QMainWindow, QPlainTextEdit, QSizePolicy, QWidget)
 import res_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(481, 765)
+        MainWindow.resize(481, 738)
         self.actiong = QAction(MainWindow)
         self.actiong.setObjectName(u"actiong")
         self.action_O = QAction(MainWindow)
@@ -132,15 +131,6 @@ class Ui_MainWindow(object):
         self.magicEndLabel.setObjectName(u"magicEndLabel")
         self.magicEndLabel.setGeometry(QRect(20, 390, 81, 31))
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menuBar = QMenuBar(MainWindow)
-        self.menuBar.setObjectName(u"menuBar")
-        self.menuBar.setGeometry(QRect(0, 0, 481, 21))
-        self.menu_file = QMenu(self.menuBar)
-        self.menu_file.setObjectName(u"menu_file")
-        MainWindow.setMenuBar(self.menuBar)
-
-        self.menuBar.addAction(self.menu_file.menuAction())
-        self.menu_file.addAction(self.action_O)
 
         self.retranslateUi(MainWindow)
 
@@ -171,6 +161,5 @@ class Ui_MainWindow(object):
         self.bodyLabel.setText(QCoreApplication.translate("MainWindow", u"Body :", None))
         self.magicEndTextEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"89ab", None))
         self.magicEndLabel.setText(QCoreApplication.translate("MainWindow", u"Magic End :", None))
-        self.menu_file.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6(&F)", None))
     # retranslateUi
 
